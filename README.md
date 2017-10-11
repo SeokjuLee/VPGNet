@@ -14,7 +14,7 @@ To be opened
 
 
 ## Dataset Contact
-+ The rights of the dataset are owned by Samsung Electronics.
++ The rights of the dataset are granted by Samsung Electronics.
 + Please contact [Tae-Hee Lee](mailto:th810.lee@samsung.com), [Hyun Seok Hong](mailto:hyunseok76.hong@samsung.com), and [Seung-Hoon Han](mailto:luoes.han@samsung.com) with questions and comments.
 
 
