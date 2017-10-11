@@ -6,11 +6,11 @@ In this paper, we propose a unified end-to-end trainable multi-task network that
 
 
 ## Supplementary
-https://www.youtube.com/watch?v=jnewRlt6UbI
++ https://www.youtube.com/watch?v=jnewRlt6UbI
 
 
 ## Demo Code
-To be opened
++ To be opened
 
 
 ## Dataset Contact
@@ -19,4 +19,4 @@ To be opened
 
 
 ## Log
-09.11.2017: The "VPGNet" pages beta test
++ 09.11.2017: The "VPGNet" pages beta test
