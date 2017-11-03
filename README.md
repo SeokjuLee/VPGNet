@@ -1,6 +1,6 @@
 # [VPGNet: Vanishing Point Guided Network for Lane and Road Marking Detection and Recognition]
 
-ICCV 2017 (to be published)
+ICCV 2017
 
 <img src="./teaser.png" width="400">
 
@@ -12,7 +12,7 @@ In this paper, we propose a unified end-to-end trainable multi-task network that
 
 
 ## Demo Code
-+ To be opened
++ Caffe code is being reviewed by Samsung Research.
 
 
 ## Dataset Contact
