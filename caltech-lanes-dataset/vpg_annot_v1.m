@@ -1,5 +1,5 @@
 %% 2017.12.18. Seokju Lee & Junsik Kim
-% Convert caltech annot. into VPGNet annot.
+% Matlab code to convert caltech annot. into VPGNet annot.
 % Usage: Download Caltech Lanes dataset and change path & dir parameter 
 % <Directory structure>
 % |__ caltech-lanes-dataset (download dataset[1])
