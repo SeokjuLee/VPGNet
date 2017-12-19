@@ -33,5 +33,5 @@ Please cite [VPGNet](http://openaccess.thecvf.com/content_iccv_2017/html/Lee_VPG
 
 
 ## Log
-+ 09.11.2017: The "VPGNet" pages beta test
-+ 18.12.2017: Codes updated
++ Sep.11.2017: The "VPGNet" pages beta test
++ Dec.18.2017: Codes updated
