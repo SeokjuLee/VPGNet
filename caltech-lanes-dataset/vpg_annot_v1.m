@@ -73,7 +73,13 @@ for i = 1:numFrames
         segs = unique(segs, 'rows');
     end    
     numLaneSegs = size(segs, 1) - numLanes;
-    fprintf(fileID,'/%s/f%05d.png %d',category, i-1, size(segs,1));
+    fprintf(fileID,'/%s/f%05d.png  %d',category, i-1, size(segs,1));
+
+%     img_path = sprintf('%s\\f%05d.png',category,i-1);
+%     img = imread(img_path);
+%     figure(99);
+%     imshow(img);
+%     hold on;
 
     for j = 1:size(segs,1)    
         xmin = segs(j,1);
@@ -85,47 +91,43 @@ for i = 1:numFrames
         
         fprintf(fileID, ' ');
         
-        if (xmin+xmax)/2 < width/2
-            fprintf( fileID, ' %d', xmax );
-            fprintf( fileID, ' %d', ymin );
-            fprintf( fileID, ' %d', xmin );
-            fprintf( fileID, ' %d', ymax );
-        else
-            fprintf( fileID, ' %d', xmin );
-            fprintf( fileID, ' %d', ymin );
-            fprintf( fileID, ' %d', xmax );
-            fprintf( fileID, ' %d', ymax );
-        end       
+        fprintf( fileID, ' %d', xmin );
+        fprintf( fileID, ' %d', ymin );
+        fprintf( fileID, ' %d', xmax );
+        fprintf( fileID, ' %d', ymax );
+%         rectangle('Position', [xmin ymin xmax-xmin ymax-ymin])
         
         fprintf( fileID, ' %d', lane_id ); % depth data -> lane_id        
     end
     
+%     waitforbuttonpress;
+    
     fprintf(fileID,'\n');    
     
     %% Visualize
-    img_path = sprintf('%s\\f%05d.png',category,i-1);
-    img = imread(img_path);
-    mask_img = zeros(size(img,1), size(img,2));
-    
-    fig = figure(1);
-    set(fig, 'position', [0, 0, 2000, 1000]);
-    subplot(1,2,1);
-    imshow(img);
-    hold on;
-    for j = 1:numLanes
-        plot(splines{j}(:,1), splines{j}(:,2),'b.','markersize',6);
-    end
-    hold off
-    
-    subplot(1,2,2);
-    imshow(img);
-    hold on;
-    for j = 1:size(segs,1)
-        rectangle('Position',[segs(j,1),segs(j,2),gg,gg]);
-    end
-    hold off;
-    
-    waitforbuttonpress;
+%     img_path = sprintf('%s\\f%05d.png',category,i-1);
+%     img = imread(img_path);
+%     mask_img = zeros(size(img,1), size(img,2));
+%     
+%     fig = figure(1);
+%     set(fig, 'position', [0, 0, 2000, 1000]);
+%     subplot(1,2,1);
+%     imshow(img);
+%     hold on;
+%     for j = 1:numLanes
+%         plot(splines{j}(:,1), splines{j}(:,2),'b.','markersize',6);
+%     end
+%     hold off
+%     
+%     subplot(1,2,2);
+%     imshow(img);
+%     hold on;
+%     for j = 1:size(segs,1)
+%         rectangle('Position',[segs(j,1),segs(j,2),gg,gg]);
+%     end
+%     hold off;
+%     
+%     waitforbuttonpress;
 
     %% Make lane GT
 %     global_im=zeros(480,640);
@@ -141,4 +143,4 @@ for i = 1:numFrames
         
 end
 
-fclose('all')
+fclose('all');
