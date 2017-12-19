@@ -1,0 +1,491 @@
+name: "VPGNet-noVP"
+
+input: "data"
+input_shape {
+  dim: 1
+  dim: 3
+  dim: 480
+  dim: 640
+}
+
+layer {
+  name: "L0"
+  type: "Convolution"
+  bottom: "data"
+  top: "L0"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 96
+    kernel_size: 11
+    stride: 4
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 1
+    }
+  }
+}
+layer {
+  name: "relu1"
+  type: "ReLU"
+  bottom: "L0"
+  top: "L0"
+}
+layer {
+  name: "norm1"
+  type: "LRN"
+  bottom: "L0"
+  top: "norm1"
+  lrn_param {
+    k: 2
+    local_size: 5
+    alpha: 0.0005
+    beta: 0.75
+  }
+}
+layer {
+  name: "pool1"
+  type: "Pooling"
+  bottom: "norm1"
+  top: "pool1"
+  pooling_param {
+    pool: MAX
+    kernel_size: 3
+    stride: 2
+  }
+}
+layer {
+  name: "L1"
+  type: "Convolution"
+  bottom: "pool1"
+  top: "L1"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 256
+    pad: 2
+    kernel_size: 5
+    group: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 1
+    }
+  }
+}
+layer {
+  name: "relu2"
+  type: "ReLU"
+  bottom: "L1"
+  top: "L1"
+}
+layer {
+  name: "norm2"
+  type: "LRN"
+  bottom: "L1"
+  top: "norm2"
+  lrn_param {
+    k: 8
+    local_size: 5
+    alpha: 0.0005
+    beta: 0.75
+  }
+}
+layer {
+  name: "pool2"
+  type: "Pooling"
+  bottom: "norm2"
+  top: "pool2"
+  pooling_param {
+    pool: MAX
+    kernel_size: 3
+    stride: 2
+  }
+}
+layer {
+  name: "L2"
+  type: "Convolution"
+  bottom: "pool2"
+  top: "L2"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 384
+    pad: 1
+    kernel_size: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.1
+    }
+  }
+}
+layer {
+  name: "relu3"
+  type: "ReLU"
+  bottom: "L2"
+  top: "L2"
+}
+layer {
+  name: "L3"
+  type: "Convolution"
+  bottom: "L2"
+  top: "L3"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 384
+    pad: 1
+    kernel_size: 3
+    group: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.1
+    }
+  }
+}
+layer {
+  name: "relu4"
+  type: "ReLU"
+  bottom: "L3"
+  top: "L3"
+}
+layer {
+  name: "L4"
+  type: "Convolution"
+  bottom: "L3"
+  top: "L4"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 384
+    pad: 1
+    kernel_size: 3
+    group: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.1
+    }
+  }
+}
+layer {
+  name: "relu5"
+  type: "ReLU"
+  bottom: "L4"
+  top: "L4"
+}
+layer {
+  name: "pool5"
+  type: "Pooling"
+  bottom: "L4"
+  top: "pool5"
+  pooling_param {
+    pool: MAX
+    kernel_size: 3
+    stride: 2
+  }
+}
+
+layer {
+  name: "L5"
+  type: "Convolution"
+  bottom: "pool5"
+  top: "L5"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 4096
+    kernel_size: 6
+    pad: 3
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 1
+    }
+  }
+}
+layer {
+  name: "relu6"
+  type: "ReLU"
+  bottom: "L5"
+  top: "L5"
+}
+layer {
+  name: "L6a"
+  type: "Convolution"
+  bottom: "L5"
+  top: "L6a"
+  param {
+    lr_mult: 5
+    decay_mult: 0.1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 4096
+    kernel_size: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 1
+    }
+  }
+}
+layer {
+  name: "relu7a"
+  type: "ReLU"
+  bottom: "L6a"
+  top: "L6a"
+}
+layer {
+  name: "L6b"
+  type: "Convolution"
+  bottom: "L5"
+  top: "L6b"
+  param {
+    lr_mult: 5
+    decay_mult: 0.1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 4096
+    kernel_size: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 1
+    }
+  }
+}
+layer {
+  name: "relu7b"
+  type: "ReLU"
+  bottom: "L6b"
+  top: "L6b"
+}
+layer {
+  name: "L6c"
+  type: "Convolution"
+  bottom: "L5"
+  top: "L6c"
+  param {
+    lr_mult: 5
+    decay_mult: 0.1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 4096
+    kernel_size: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 1
+    }
+  }
+}
+layer {
+  name: "relu7c"
+  type: "ReLU"
+  bottom: "L6c"
+  top: "L6c"
+}
+layer {
+  name: "bb-output"
+  type: "Convolution"
+  bottom: "L6a"
+  top: "bb-output"
+  param {
+    lr_mult: 20
+    decay_mult: 0.1
+  }
+  param {
+    lr_mult: 20
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 256
+    kernel_size: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.0
+    }
+  }
+}
+
+layer {
+  name: "pixel-conv"
+  type: "Convolution"
+  bottom: "L6b"
+  top: "pixel-conv"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 128
+    kernel_size: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.0
+    }
+  }
+}
+
+layer {
+  name: "type-conv"
+  type: "Convolution"
+  bottom: "L6c"
+  top: "type-conv"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 1024
+    kernel_size: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.0
+    }
+  }
+}
+
+layer {
+  name: "pixel-tile"
+  type: "Tiling"
+  bottom: "pixel-conv"
+  top: "pixel-conv-tiled"
+  tiling_param {
+    tile_dim: 8
+  }
+}
+
+layer {
+  name: "bb-tile"
+  type: "Tiling"
+  bottom: "bb-output"
+  top: "bb-output-tiled"
+  tiling_param {
+    tile_dim: 8
+  }
+}
+
+layer {
+  name: "type-tile"
+  type: "Tiling"
+  bottom: "type-conv"
+  top: "type-conv-tiled"
+  tiling_param {
+    tile_dim: 4
+  }
+}
+
+# Pixel level softmax prediction.
+layer {
+  name: "pixel-prob"
+  type: "Softmax"
+  bottom: "pixel-conv-tiled"
+  top: "pixel-prob"
+}
+
+# Pixel level softmax prediction.
+layer {
+  name: "type-prob"
+  type: "Softmax"
+  bottom: "type-conv-tiled"
+  top: "type-prob"
+}
