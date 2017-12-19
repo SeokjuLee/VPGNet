@@ -11,8 +11,20 @@ In this paper, we propose a unified end-to-end trainable multi-task network that
 + https://www.youtube.com/watch?v=jnewRlt6UbI
 
 
+## Citation
+Please cite [VPGNet](http://openaccess.thecvf.com/content_iccv_2017/html/Lee_VPGNet_Vanishing_Point_ICCV_2017_paper.html) in your publications if it helps your research:
+    
+    @InProceedings{Lee_2017_ICCV,
+      author = {Lee, Seokju and Kim, Junsik and Shin Yoon, Jae and Shin, Seunghak and Bailo, Oleksandr and Kim, Namil and Lee, Tae-Hee and Seok Hong, Hyun and Han, Seung-Hoon and So Kweon, In},
+      title = {VPGNet: Vanishing Point Guided Network for Lane and Road Marking Detection and Recognition},
+      booktitle = {The IEEE International Conference on Computer Vision (ICCV)},
+      month = {Oct},
+      year = {2017}
+    }
+
+
 ## Demo Code
-+ Caffe code is being reviewed by Samsung Research.
++ Codes are being reviewed by Samsung Research.
 
 
 ## Dataset Contact
@@ -22,3 +34,4 @@ In this paper, we propose a unified end-to-end trainable multi-task network that
 
 ## Log
 + 09.11.2017: The "VPGNet" pages beta test
++ 18.12.2017: Codes updated
