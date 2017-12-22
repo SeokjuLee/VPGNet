@@ -532,7 +532,6 @@ layer {
   }
 }
 
-
 layer {
   name: "bb-output"
   type: "Convolution"

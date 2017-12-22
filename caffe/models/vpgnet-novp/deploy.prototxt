@@ -267,6 +267,7 @@ layer {
   bottom: "L5"
   top: "L5"
 }
+
 layer {
   name: "L6a"
   type: "Convolution"
@@ -299,6 +300,7 @@ layer {
   bottom: "L6a"
   top: "L6a"
 }
+
 layer {
   name: "L6b"
   type: "Convolution"
@@ -331,6 +333,7 @@ layer {
   bottom: "L6b"
   top: "L6b"
 }
+
 layer {
   name: "L6c"
   type: "Convolution"
@@ -363,6 +366,7 @@ layer {
   bottom: "L6c"
   top: "L6c"
 }
+
 layer {
   name: "bb-output"
   type: "Convolution"
@@ -476,16 +480,16 @@ layer {
 
 # Pixel level softmax prediction.
 layer {
-  name: "pixel-prob"
+  name: "binary-mask"
   type: "Softmax"
   bottom: "pixel-conv-tiled"
-  top: "pixel-prob"
+  top: "binary-mask"
 }
 
 # Pixel level softmax prediction.
 layer {
-  name: "type-prob"
+  name: "multi-label"
   type: "Softmax"
   bottom: "type-conv-tiled"
-  top: "type-prob"
+  top: "multi-label"
 }
