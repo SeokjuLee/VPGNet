@@ -24,14 +24,13 @@ Please cite [VPGNet](http://openaccess.thecvf.com/content_iccv_2017/html/Lee_VPG
 
 
 ### Baseline Usage
-1) Clone the repository
+1. Clone the repository
 
     ```Shell
     git clone https://github.com/SeokjuLee/VPGNet.git
     ```
 
 2. Prepare dataset from Caltech Lanes Dataset.<br/>
-(Our dataset is currently being reviewed by Samsung Research. This baseline doesn't need VP annotations.)
     - Download [Caltech Lanes Dataset](http://www.mohamedaly.info/datasets/caltech-lanes).
     - Organize the file structure as below.
     ```Shell
@@ -58,11 +57,29 @@ Please cite [VPGNet](http://openaccess.thecvf.com/content_iccv_2017/html/Lee_VPG
     - Run 'train.sh'
 
 
-### Dataset Contact
-+ All rights about the dataset are preserved by Samsung Electronics Co.
-+ Please contact [Tae-Hee Lee](mailto:th810.lee@samsung.com), [Hyun Seok Hong](mailto:hyunseok76.hong@samsung.com), and [Seung-Hoon Han](mailto:luoes.han@samsung.com) with questions and comments.
+### VPGNet Dataset
+1. Download
+	- If you would like to download the VPGNet dataset, please fill out a [survey](http://forms.gle/LNCPUgEu4B7XGjLZA). We will send you an e-mail with a download link.
+
+2. Dataset overview
+    - File structure
+    ```Shell
+    |__ VPGNet-DB-5ch
+        |__ scene_01
+            |__ $TIMESTAMP
+            	|__ $FRAMEIDX.mat
+        |__ scene_02
+        |__ scene_03
+        ...
+        |__ scene_13
+    ```
+
+3. Formatting
+    - We parse RGB image (3ch), segmentation (1ch), and vanishing point (1ch) labels into a blob of 5 channels as a $FRAMEIDX.mat (MATLAB) file.
+    - For class labels, please refer [vpgnet-labels](http://github.com/SeokjuLee/VPGNet/blob/master/vpgnet-labels.txt).
 
 
 ### Log
 + Sep.11.2017: The "VPGNet" pages beta test
 + Dec.18.2017: Caffe codes uploaded
++ Mar.20.2020: README Updated
